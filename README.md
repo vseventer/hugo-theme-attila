@@ -3,7 +3,7 @@
 
 Attila is a minimalistic and simple content-focused theme, supporting a paginated homepage, post, and tag pages.
 
-![screenshot](./images/screenshot.png)
+![screenshot](https://raw.githubusercontent.com/vseventer/hugo-theme-attila/master/images/screenshot.png)
 
 ## Installation
 Inside the folder of your Hugo site run:
