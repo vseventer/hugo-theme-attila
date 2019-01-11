@@ -1,0 +1,29 @@
+{{/* Port of attila/tag.hbs */}}
+
+{{ define "body" }}
+
+{{ $hasCover := or (isset .Params "cover") (isset .Site.Params "cover") }}
+<header id="blog-header"{{ if $hasCover }} class="has-cover"{{ end }}>
+  <div class="inner">
+    {{ partial "subnav" . }}
+    <h1 class="blog-name">{{ .Data.Term }}</h1>
+    <span class="blog-description">
+      {{ if isset .Params "description" }}
+        {{ .Params.description }}
+      {{ else }}
+        {{ T "numberOfPosts" (dict "Count" (len .Pages)) }}
+      {{ end }}
+    </span>
+    {{ if $hasCover }}
+      <div class="blog-cover cover" style="background-image: url('{{ default .Site.Params.cover .Params.cover | absURL }}');"></div>
+    {{ end }}
+  </div>
+</header>
+
+<div id="index" class="container">
+  <main class="content" role="main">
+    {{ partial "loop" . }}
+  </main>
+</div>
+
+{{ end }}

@@ -1,0 +1,20 @@
+{{/* Port of attila/partials/pagination.hbs */}}
+
+<nav class="pagination" role="pagination">
+  <div class="inner">
+    {{ if .Paginator.HasPrev }}
+      <a class="pagination-next" href="{{ .Paginator.Prev.URL }}">
+        <i class="ic ic-arrow-left"></i>
+        <span class="pagination-label">{{ T "newerPosts" . }}</span>
+      </a>
+    {{ end }}
+    <span class="pagination-info">{{ T "pager" . }}</span>
+    {{ if .Paginator.HasNext }}
+      <a class="pagination-prev" href="{{ .Paginator.Next.URL }}">
+        <span class="pagination-label">{{ T "olderPosts" . }}</span>
+        <i class="ic ic-arrow-right"></i>
+      </a>
+    {{ end }}
+    <div class="clear"></div>
+  </div>
+</nav>

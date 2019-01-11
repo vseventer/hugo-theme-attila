@@ -1,0 +1,26 @@
+{{/* Port of attila/index.hbs */}}
+
+{{ define "body" }}
+
+{{ $hasCover := isset .Site.Params "cover" }}
+<header id="blog-header"{{ if $hasCover }} class="has-cover"{{ end }}>
+  <div class="inner">
+    {{ partial "subnav" . }}
+    <h1 class="blog-name">
+      <a href="{{ .URL }}">{{ .Site.Title }}</a>
+    </h1>
+    {{ if isset .Site.Params "description" }}
+      <span class="blog-description">{{ .Site.Params.description }}</span>
+    {{ end }}
+    {{ if $hasCover }}
+      <div class="blog-cover cover" style="background-image: url('{{ .Site.Params.cover | absURL }}');"></div>
+    {{ end }}
+</header>
+
+<div id="index" class="container">
+  <main class="content" role="main">
+    {{ partial "loop" . }}
+  </main>
+</div>
+
+{{ end }}

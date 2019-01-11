@@ -1,0 +1,22 @@
+name = "Attila"
+license = "MIT"
+licenselink = "https://github.com/vseventer/hugo-theme-attila/LICENSE.txt"
+description = "Hugo port of Attila, a Ghost theme"
+homepage = "https://github.com/vseventer/hugo-theme-attila"
+tags = [ "blog", "clean", "minimal", "simple", "light", "mobile" ]
+features = [
+  "index",
+  "single",
+  "taxonomy"
+]
+min_version = 0.47
+
+[author]
+  name = "Mark van Seventer"
+  homepage = "https://www.vseventer.com"
+
+# If porting an existing theme
+[original]
+  name = "attila"
+  homepage = "https://github.com/zutrinken/attila"
+  repo = "https://github.com/zutrinken/attila"

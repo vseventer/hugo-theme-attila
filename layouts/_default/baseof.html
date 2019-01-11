@@ -1,0 +1,64 @@
+{{/* Port of attila/default.hbs */}}
+<!doctype html>
+<html lang="{{ .Site.Language.Lang }}">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+    <title>{{ .Title }}</title>
+
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {{/* Execute style as template in order to change the target path */}}
+    {{ $css := resources.Get "sass/style.scss" | resources.ExecuteAsTemplate "css/style.css" . | toCSS | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $css.Permalink }}" integrity="{{ $css.Data.Integrity }}" />
+
+    {{ block "head" . }}
+      {{/* Empty block */}}
+    {{ end }}
+  </head>
+  <body class="{{ cond .IsHome "home-template" "post-template" }}">
+    {{ partial "navigation" . }}
+
+    <section id="wrapper">
+      <a class="hidden-close"></a>
+
+      {{ template "body" . }}
+
+      <footer id="footer">
+        <div class="inner">
+          <section class="credits">
+            <span class="credits-theme">
+              {{ $originalThemeHTML := "<a href=\"https://github.com/zutrinken/attila\">Attila</a>" }}
+              {{ $originalAuthorHTML := "<a href=\"https://zutrinken.com\" rel=\"nofollow\">zutrinken</a>" }}
+              {{ T "authorCredits" (dict "Name" $originalThemeHTML "Author" $originalAuthorHTML) | safeHTML }}
+              |
+              {{ $themeHTML := "<a href=\"https://github.com/vseventer/hugo-theme-attila\">hugo-theme-attila</a>" }}
+              {{ $authorHTML := "<a href=\"https://www.vseventer.com\" rel=\"nofollow\">vseventer</a>" }}
+              {{ T "authorCredits" (dict "Name" $themeHTML "Author" $authorHTML) | safeHTML }}
+            </span>
+            <span class="credits-software">
+              {{ $publisherHTML := "<a href=\"https://gohugo.io\">Hugo</a>" }}
+              {{ T "softwareCredits" (dict "Name" $publisherHTML) | safeHTML }}
+            </span>
+          </section>
+        </div>
+      </footer>
+    </section>
+
+    {{ $highlight := resources.Get "js/libs/highlight.pack.js" }}
+    {{ $jquery := resources.Get "js/libs/jquery-1.11.3.min.js" }}
+    {{ $fitVids := resources.Get "js/libs/jquery.fitvids.js" }}
+    {{ $history := resources.Get "js/libs/jquery.history.js" }}
+    {{ $nProgress := resources.Get "js/libs/nprogress.js" }}
+    {{ $script := resources.Get "js/script.js" }}
+    {{ $js := slice $highlight $jquery $fitVids $history $nProgress $script | resources.Concat "js/script.js" }}
+    <script src="{{ $js.Permalink }}"></script>
+
+    {{ block "foot" . }}
+      {{/* Empty block */}}
+    {{ end }}
+    {{ template "_internal/google_analytics_async.html" . }}
+  </body>
+</html>

@@ -1,0 +1,26 @@
+{{/* Extrapoliation of duplicate navigation code */}}
+<nav id="navigation">
+  {{ if isset .Site.Params "logo" }}
+    <span class="blog-logo">
+      <a href="{{ .Site.BaseURL | absURL }}">
+        <img src="{{ .Site.Params.logo | absURL }}" alt="{{ T "blogLogo" . }}" />
+      </a>
+    </span>
+  {{ else }}
+    {{ if not .IsHome }}
+      <span id="home-button" class="nav-button">
+        <a class="home-button" href="{{ .Site.BaseURL | absURL }}" title="{{ T "home" . }}">
+          <i class="ic ic-arrow-left"></i> {{ T "home" . }}
+        </a>
+      </span>
+    {{ end }}
+  {{ end }}
+  {{ if .Site.Params.navigation }}
+  <span id="menu-button" class="nav-button">
+    <a class="menu-button">
+      <i class="ic ic-menu"></i>
+      {{ T "menu" . }}
+    </a>
+  </span>
+  {{ end }}
+</nav>

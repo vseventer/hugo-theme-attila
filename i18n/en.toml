@@ -1,0 +1,33 @@
+# Core.
+[blogLogo]
+  other = "Blog Logo"
+
+[close]
+  other = "Close"
+
+[home]
+  other = "Home"
+
+[menu]
+  other = "Menu"
+
+# Credits.
+[authorCredits]
+  other = "Theme {{ .Name }} by {{ .Author }}"
+
+[softwareCredits]
+  other = "Published with {{ .Name }}"
+
+# Pagination.
+[newerPosts]
+  other = "Newer Posts"
+
+[olderPosts]
+  other = "Older Posts"
+
+[pager]
+  other = "Page {{ .Paginator.PageNumber }} of {{ .Paginator.TotalPages }}"
+
+# Taxonomy.
+[numberOfPosts]
+  other = "Posts: {{ .Count }}"

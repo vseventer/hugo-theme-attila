@@ -1,0 +1,37 @@
+{{/* Port of attila/partials/loop.hbs */}}
+
+<div class="extra-pagination">
+  {{ partial "pagination" . }}
+</div>
+
+{{ range .Paginator.Pages }}
+  <article class="post{{ if .Params.featured }} featured{{ end }}">
+    <div class="inner">
+      <header class="post-header">
+          <h2 class="post-title">
+            <a href="{{ .Permalink}}">{{ .Title }}</a>
+          </h2>
+          <span class="post-meta">
+            {{ if isset .Params "author" }}
+              {{ .Params.author }} |
+            {{ end }}
+            {{ if isset .Params "tags" }}
+              {{ range .Params.tags }}
+                {{ $tag := . | urlize }}
+                <a href="{{ printf "tags/%s" $tag | absURL }}">{{ . }}</a>
+              {{ end }}
+              |
+            {{ end }}
+            <time datetime="{{ dateFormat "2006-01-02" .Date }}">{{ dateFormat "02 Jan 2006" .Date }}</time>
+          </span>
+          <div class="clear"></div>
+      </header>
+
+      <section class="post-excerpt">
+        {{ .Summary }}
+      </section>
+    </div>
+  </article>
+{{ end }}
+
+{{ partial "pagination" . }}

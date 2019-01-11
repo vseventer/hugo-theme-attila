@@ -1,0 +1,28 @@
+{{/* Port of attila/partials/navigation.hbs */}}
+
+<nav id="menu">
+  <a class="close-button">{{ T "close" . }}</a>
+  <div class="nav-wrapper">
+    <p class="nav-label">{{ T "menu" . }}</p>
+    <ul>
+      {{ $currentPage := . }}
+      {{ range .Site.Menus.main }}
+        <li class="nav-{{ .Name | urlize }}{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}" role="presentation">
+          <a href="{{ .URL }}">{{ .Name }}</a>
+        </li>
+      {{ end }}
+      {{ if isset .Site.Params "twitter" }}
+        <li class="nav-twitter">
+          <a href="https://twitter.com/{{ .Site.Params.twitter | urlize }}" title="{{ .Site.Params.twitter }}">
+            <i class="ic ic-twitter"></i> Twitter
+          </a>
+      {{ end }}
+      {{ if isset .Site.Params "facebook" }}
+        <li class="nav-facebook">
+          <a href="https://www.facebook.com/{{ .Site.Params.facebook | urlize }}" title="{{ .Site.Params.facebook }}">
+            <i class="ic ic-twitter"></i> Facebook
+          </a>
+      {{ end }}
+    </ul>
+  </div>
+</nav>
