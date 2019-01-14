@@ -1,6 +1,6 @@
 name = "Attila"
 license = "MIT"
-licenselink = "https://github.com/vseventer/hugo-theme-attila/LICENSE.txt"
+licenselink = "https://github.com/vseventer/hugo-theme-attila/blob/master/LICENSE.md"
 description = "Hugo port of Attila, a Ghost theme"
 homepage = "https://github.com/vseventer/hugo-theme-attila"
 tags = [ "blog", "clean", "minimal", "simple", "light", "mobile" ]
