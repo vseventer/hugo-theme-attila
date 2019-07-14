@@ -8,7 +8,7 @@
       {{ $currentPage := . }}
       {{ range .Site.Menus.main }}
         <li class="nav-{{ .Name | urlize }}{{ if $currentPage.IsMenuCurrent "main" . }} active{{ end }}" role="presentation">
-          <a href="{{ .URL }}">{{ .Name }}</a>
+          <a href="{{ .RelPermalink }}">{{ .Name }}</a>
         </li>
       {{ end }}
       {{ if isset .Site.Params "twitter" }}

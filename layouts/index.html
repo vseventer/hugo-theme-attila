@@ -7,7 +7,7 @@
   <div class="inner">
     {{ partial "subnav" . }}
     <h1 class="blog-name">
-      <a href="{{ .URL }}">{{ .Site.Title }}</a>
+      <a href="{{ .Permalink }}">{{ .Site.Title }}</a>
     </h1>
     {{ if isset .Site.Params "description" }}
       <span class="blog-description">{{ .Site.Params.description }}</span>
